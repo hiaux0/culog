@@ -1,0 +1,28 @@
+{
+  "name": "culog",
+  "version": "0.0.1",
+  "description": "console.* with lots of customizations",
+  "main": "dist/index.js",
+  "scripts": {
+    "prepublishOnly": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hiaux0/culog.git"
+  },
+  "keywords": [
+    "console",
+    "log",
+    "logging"
+  ],
+  "author": "hiaux0",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hiaux0/culog/issues"
+  },
+  "homepage": "https://github.com/hiaux0/culog#readme",
+  "dependencies": {
+    "typescript": "^4.2.3"
+  }
+}
