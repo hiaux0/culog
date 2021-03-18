@@ -1,6 +1,6 @@
 {
   "name": "@hiaux0/culog",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "console.* with lots of customizations",
   "main": "dist/index.js",
   "publishConfig": {
