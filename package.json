@@ -4,7 +4,7 @@
   "description": "console.* with lots of customizations",
   "main": "dist/index.js",
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+    "registry": "https://registry.npmjs.org"
   },
   "repository": {
     "type": "git",
