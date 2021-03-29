@@ -91,11 +91,16 @@ export class Logger {
       }
 
       //
-      const [withSubstitutions, ...placeholderValues] = messages;
+      let [withSubstitutions, ...placeholderValues] = messages;
       let updatedSubstitutions = `[${logOpt.scope}] ${withSubstitutions}`;
 
       if (logOpt.prefix) {
         updatedSubstitutions = `- (${logOpt.prefix}.) - ${updatedSubstitutions}`;
+      }
+
+      //
+      if (logOpt.deepLogObjects) {
+        placeholderValues = placeholderValues.map(value => JSON.stringify(value))
       }
 
       const messageWithLogScope = [updatedSubstitutions, ...placeholderValues];
