@@ -2,6 +2,7 @@ const debugMode = true;
 
 interface LogOptions {
   /////////////// Log
+  disableLogger?: boolean;
   logMethod?: 'log' | 'trace' | 'error' | 'group' | 'groupEnd';
   log?: boolean;
   logLevel?: 'info' | 'verbose';
@@ -91,6 +92,8 @@ export class Logger {
       ...this.globalLogOptions,
       ...logOptions,
     };
+
+    if (logOpt.disableLogger === false) return;
 
     //
     /** === false, because it is explicitly set */
