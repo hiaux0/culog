@@ -27,5 +27,14 @@
   "scripts": {
     "prepublishOnly": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@types/jasmine": "^3.6.9",
+    "jasmine": "^3.7.0",
+    "wallaby-webpack": "^3.9.16",
+    "webpack": "^4.46.0"
+  },
+  "prettier": {
+    "singleQuote": true
   }
 }
