@@ -3,6 +3,7 @@
   "compilerOptions": {
       "declaration": true,    /* Generates corresponding '.d.ts' file. */
       "outDir": "./dist/",    /* Redirect output structure to the directory. */
-      "lib": ["es2016", "DOM"]
+      "lib": ["es2016", "DOM"],
+      "types": ["jasmine"]
   }
 }
