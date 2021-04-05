@@ -67,6 +67,11 @@ let onlyGroup: string[] = [];
 let bugGroupId: string[] = [];
 
 export class Logger {
+  private logTrail: any[] = []
+  public getLogTrail() {
+    return this.logTrail;
+  }
+
   constructor(private globalLogOptions: LogOptions) {
     (<any>window).loggerDevelopmentDebugLog = loggerDevelopmentDebugLog;
   }
@@ -189,6 +194,7 @@ export class Logger {
     }
     // >>> Actual log
     console[logOpt.logMethod](...messageWithLogScope);
+    this.logTrail.push(messageWithLogScope);
     loggerDevelopmentDebugLog.push([logOpt.logMethod, ...messageWithLogScope]);
 
     if (logOpt.endGroupId !== undefined && logOpt.endGroupId === groupId[0]) {
