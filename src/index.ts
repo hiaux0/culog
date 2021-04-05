@@ -71,12 +71,19 @@ export class Logger {
     (<any>window).loggerDevelopmentDebugLog = loggerDevelopmentDebugLog;
   }
 
+  public setLogOptions(logOptions: LogOptions) {
+    this.globalLogOptions = {
+      ...this.globalLogOptions,
+      ...logOptions
+    }
+  }
+
   debug(messages: [string, ...any[]], logOptions?: LogOptions) {
     if (!debugMode) return;
 
     const logOpt = {
-      ...this.globalLogOptions,
       ...defautLogOptions,
+      ...this.globalLogOptions,
       ...logOptions,
     };
 
