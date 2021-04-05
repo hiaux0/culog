@@ -74,7 +74,9 @@ export class Logger {
   }
 
   constructor(private globalLogOptions: LogOptions) {
-    (<any>window).loggerDevelopmentDebugLog = loggerDevelopmentDebugLog;
+    if (window) {
+      (<any>window).loggerDevelopmentDebugLog = loggerDevelopmentDebugLog;
+    }
   }
 
   public setLogOptions(logOptions: LogOptions) {
