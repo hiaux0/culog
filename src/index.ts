@@ -93,7 +93,7 @@ export class Logger {
       ...logOptions,
     };
 
-    if (logOpt.disableLogger === false) return;
+    if (logOpt.disableLogger === true) return;
 
     //
     /** === false, because it is explicitly set */
