@@ -68,7 +68,7 @@ let onlyGroup: string[] = [];
 let bugGroupId: string[] = [];
 
 export class Logger {
-  private logTrail: any[] = []
+  private logTrail: any[] = [];
   public getLogTrail() {
     return this.logTrail;
   }
@@ -78,6 +78,9 @@ export class Logger {
   public setLogOptions(logOptions: LogOptions) {
     this.globalLogOptions = {
       ...this.globalLogOptions,
+      ...logOptions,
+    };
+  }
 
   public enableBrowserDevelopmentLogging(): void {
     if (window) {
@@ -85,7 +88,7 @@ export class Logger {
     }
   }
 
-  debug(messages: [string, ...any[]], logOptions?: LogOptions) {
+  debug(messages: [string, ...any[]], logOptions?: LogOptions): any[] {
     if (!debugMode) return;
 
     const logOpt = {
@@ -211,9 +214,11 @@ export class Logger {
         console.table(messageWithLogScope[1]);
       }
     }
+
+    return messageWithLogScope;
   }
 
-  bug(message: string, logOptions: BugLogOptions = {}) {
+  bug(message: string, logOptions: BugLogOptions = {}): string {
     //
     if (logOptions.isStart) {
       console.group(message);
@@ -246,10 +251,15 @@ export class Logger {
     if (logOptions.debugger) {
       debugger;
     }
+
+    return finalMessage;
   }
 
-  todo(message: string) {
-    console.log(`>>>> [TODO]: %c${message}`, `background: ${'darkgreen'}`);
+  todo(message: string): string {
+    const todoMessage = `>>>> [TODO]: %c${message}`;
+    console.log(todoMessage, `background: ${'darkgreen'}`);
+
+    return todoMessage;
   }
 }
 
