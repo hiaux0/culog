@@ -73,16 +73,15 @@ export class Logger {
     return this.logTrail;
   }
 
-  constructor(private globalLogOptions: LogOptions) {
-    if (window) {
-      (<any>window).loggerDevelopmentDebugLog = loggerDevelopmentDebugLog;
-    }
-  }
+  constructor(private globalLogOptions: LogOptions) {}
 
   public setLogOptions(logOptions: LogOptions) {
     this.globalLogOptions = {
       ...this.globalLogOptions,
-      ...logOptions
+
+  public enableBrowserDevelopmentLogging(): void {
+    if (window) {
+      (<any>window).loggerDevelopmentDebugLog = loggerDevelopmentDebugLog;
     }
   }
 
