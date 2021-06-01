@@ -82,13 +82,17 @@ export class Logger {
     };
   }
 
+  public setScope(scopeName: string): void {
+    this.globalLogOptions.scope = scopeName;
+  }
+
   public enableBrowserDevelopmentLogging(): void {
     if (window) {
       (<any>window).loggerDevelopmentDebugLog = loggerDevelopmentDebugLog;
     }
   }
 
-  debug(messages: [string, ...any[]], logOptions?: LogOptions): any[] {
+  public debug(messages: [string, ...any[]], logOptions?: LogOptions): any[] {
     if (!debugMode) return;
 
     const logOpt = {
@@ -218,7 +222,7 @@ export class Logger {
     return messageWithLogScope;
   }
 
-  bug(message: string, logOptions: BugLogOptions = {}): string {
+  public bug(message: string, logOptions: BugLogOptions = {}): string {
     //
     if (logOptions.isStart) {
       console.group(message);
@@ -255,7 +259,7 @@ export class Logger {
     return finalMessage;
   }
 
-  todo(message: string): string {
+  public todo(message: string): string {
     const todoMessage = `>>>> [TODO]: %c${message}`;
     console.log(todoMessage, `background: ${'darkgreen'}`);
 
