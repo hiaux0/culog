@@ -223,6 +223,8 @@ export class Logger {
   }
 
   public bug(message: string, logOptions: BugLogOptions = {}): string {
+    if (!debugMode) return;
+
     //
     if (logOptions.isStart) {
       console.group(message);
