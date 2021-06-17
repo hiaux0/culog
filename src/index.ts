@@ -47,7 +47,7 @@ interface LogOptions {
   expandGroupBasedOnString?: string;
 }
 
-const defautLogOptions: LogOptions = {
+let defautLogOptions: LogOptions = {
   logMethod: 'log',
   logLevel: 'VERBOSE',
   clearPreviousGroupsWhen_isOnlyGroup_True: true,
@@ -99,6 +99,13 @@ export class Logger {
   public setLogOptions(logOptions: LogOptions) {
     this.globalLogOptions = {
       ...this.globalLogOptions,
+      ...logOptions,
+    };
+  }
+
+  public overwriteDefaultLogOtpions(logOptions: LogOptions) {
+    defautLogOptions = {
+      ...defautLogOptions,
       ...logOptions,
     };
   }
