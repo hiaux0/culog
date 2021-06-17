@@ -1,11 +1,17 @@
 const debugMode = true;
 
+/**
+ * TODO: WARNING and ERROR mean sth else in other loggers, but here
+ * it's just a "higher level"
+ */
+type LogLevel = 'INFO' | 'DEBUG' | 'VERBOSE' | 'WARNING' | 'ERROR';
+
 interface LogOptions {
   /////////////// Log
   disableLogger?: boolean;
   logMethod?: 'log' | 'trace' | 'error' | 'group' | 'groupEnd';
   log?: boolean;
-  logLevel?: 'info' | 'verbose';
+  logLevel?: LogLevel;
   onlyVerbose?: boolean;
   /**
    * TODO
@@ -43,7 +49,7 @@ interface LogOptions {
 
 const defautLogOptions: LogOptions = {
   logMethod: 'log',
-  logLevel: 'verbose',
+  logLevel: 'VERBOSE',
   clearPreviousGroupsWhen_isOnlyGroup_True: true,
   // dontLogUnlessSpecified: true,
   focusedLogging: false,
@@ -60,6 +66,21 @@ interface BugLogOptions {
   color?: string;
   index?: number;
   debugger?: boolean;
+}
+
+const LogLevelMap = {
+  INFO: 0,
+  DEBUG: 1,
+  VERBOSE: 2,
+  WARNING: 3,
+  ERROR: 4,
+};
+
+function isAllowedLogLevel(logOptions: LogOptions) {
+  const isAllowed =
+    LogLevelMap[logOptions.logLevel] <= LogLevelMap[defautLogOptions.logLevel];
+
+  return isAllowed;
 }
 
 const loggerDevelopmentDebugLog: string[][] = [];
@@ -102,6 +123,7 @@ export class Logger {
     };
 
     if (logOpt.disableLogger === true) return;
+    if (!isAllowedLogLevel(logOpt)) return;
 
     //
     /** === false, because it is explicitly set */
@@ -140,7 +162,7 @@ export class Logger {
       throw `!!! [[ERROR]] Check above message !!!`;
     }
 
-    if (logOpt.logLevel !== 'verbose' && logOpt.onlyVerbose) {
+    if (logOpt.logLevel !== 'VERBOSE' && logOpt.onlyVerbose) {
       return;
     }
 
