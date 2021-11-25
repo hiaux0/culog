@@ -1,13 +1,3 @@
-const wallabyWebpack = require('wallaby-webpack');
-const wallabyPostprocessor = wallabyWebpack({
-    // webpack options, such as
-    // module: {
-    //   loaders: [...] or rules: [...]
-    // },
-    // externals: { jquery: "jQuery" }
-  }
-);
-
 module.exports = function (wallaby) {
   return {
     debug: true,
@@ -36,8 +26,6 @@ module.exports = function (wallaby) {
     //     module: 'commonjs',
     //   }),
     // },
-
-    postprocessor: wallabyPostprocessor,
 
     setup: function () {
       // required to trigger test loading
