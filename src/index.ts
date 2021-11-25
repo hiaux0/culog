@@ -6,7 +6,7 @@ const debugMode = true;
  */
 type LogLevel = 'INFO' | 'DEBUG' | 'VERBOSE' | 'WARNING' | 'ERROR';
 
-interface LogOptions {
+export interface LogOptions {
   /////////////// Log
   disableLogger?: boolean;
   logMethod?: 'log' | 'trace' | 'error' | 'group' | 'groupEnd';
