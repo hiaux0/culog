@@ -1,6 +1,6 @@
 {
   "name": "culog",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "console.* with lots of customizations",
   "main": "dist/index.js",
   "publishConfig": {
